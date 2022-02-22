@@ -162,7 +162,7 @@ useEffect(()=>{
         <div className='drawer-flex'>
         <Button varient="text" color="inherit" onClick={()=>history.push("/home")}><HomeIcon />Home</Button>
         <Divider />
-        <Button varient="text" color="inherit" onClick={()=>history.push("/homepage")}><PersonIcon />Profile</Button>
+        <Button varient="text" color="inherit" onClick={()=>history.push("/userdetail")}><PersonIcon />Profile</Button>
         <Divider />
         <Button varient="text" color="inherit" onClick={()=>history.push("/postjob")}><AddIcon />Post Job</Button>
         <Divider />
@@ -187,6 +187,14 @@ useEffect(()=>{
         <Moredetails />
         </Route>
 
+        <Route path="/userdetail/edit/:id">
+        <EditUserDetail />
+        </Route>
+
+        <Route path="/userdetail">
+          <User />
+        </Route>
+
         <Route path="/postjob">
           <Addjob />
         </Route>
@@ -203,13 +211,7 @@ useEffect(()=>{
           <Listjob />
         </Route>
 
-        <Route path="/userdetail/edit/:id">
-        <Edituserdetail />
-        </Route>
-
-        <Route path="/userdetail">
-          <User />
-        </Route>
+       
 
         </Switch>
       </Main>
@@ -766,7 +768,7 @@ editButton= {<IconButton
   );
 }
 
-function Userdetails({firstname,lastname,mobile,portfolio,email,about,address,education,skill,experience,project,editButton}){
+function Userdetails({firstname,lastname,mobile,portfolio,email,about,address,education,skill,experience,project,id,editButton}){
   return(
     <div className='container'>
     <div className="full-details">
@@ -788,7 +790,7 @@ function Userdetails({firstname,lastname,mobile,portfolio,email,about,address,ed
   );
 }
 
-function Edituserdetail(){
+function EditUserDetail(){
   const {id} = useParams();
 
   const [userdet, setUserdet] = useState(null);
@@ -798,11 +800,11 @@ function Edituserdetail(){
     .then((mv)=>setUserdet(mv));
   }, [id]);
   
-    return userdet? <Updateuserdetail userdet={userdet}/>:"";
+    return userdet? <UpdateUserDetail userdet={userdet}/>:"";
     
 }
 
-function Updateuserdetail({userdet}){
+function UpdateUserDetail({userdet}){
   const history = useHistory();
 
   const formvalidationschema = yup.object({
@@ -845,17 +847,17 @@ function Updateuserdetail({userdet}){
    
     console.log(updatedMovie);
 
-  fetch(`${API_URL}/job/${userdet._id}`, {
+  fetch(`${API_URL}/user/${userdet._id}`, {
     method:"PUT",
     body: JSON.stringify(updatedMovie),
     headers: {'Content-Type': 'application/json'},
-}).then(()=>history.push("/postedjob"))
+}).then(()=>history.push("/userdetail"))
   };
   return(
 <form onSubmit={handleSubmit} className="in-con">
 
 
-<TextareaAutosize id="firstname" 
+      <TextareaAutosize id="firstname" 
       name="firstname" 
       value = {values.firstname} 
       onChange={handleChange} 
