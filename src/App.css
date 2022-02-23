@@ -44,6 +44,29 @@
     align-content: flex-start;
     
   }
+
+  .full-details-list{
+    gap: 10px;
+    border-radius: 10px;
+    width: 450px;
+    overflow: hidden;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    transition: all 0.2s;
+    box-shadow: 2px 3px 6px 1px rgb(124 124 124);
+    height: min-content;
+    padding: 15px;
+    background-image: linear-gradient(rgba(37, 36, 36, 0.521),transparent),url("https://medlininc.com/wp-content/uploads/2018/09/iStock-939184094.jpg");
+    background-repeat: no-repeat;
+   background-size: cover;
+   cursor: pointer;
+   transition: all 1s;
+  }
+
+  .full-details-list:hover{
+transform: scale(1.1);
+  }
+
   .title{
     font-family: 'Open Sans', sans-serif;
     letter-spacing: 1px;
@@ -99,6 +122,17 @@ height: 40px;
   height: 40px;
 }
 
+.user-text-area{
+  width: 450px;
+  height: 40px;
+}
+.button-flex{
+  margin: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 
 @media(max-width: 1200px){
   .two-flex{
@@ -117,10 +151,32 @@ height: 40px;
   width: 450px;
   height: 40px;
 }
+.user-text-area{
+  width: 300px;
+  height: 40px;
+}
+.full-details{
+ 
+    width: 500px;
+   
+  }
+  .more-details-div{
+  
+    padding: 20px;
+  }
 }
 
 
 @media(max-width: 700px){
+  .title{
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing: 0.5px;
+   display: flex;
+   font-weight: 200;
+  }
+  .title-margin{
+    margin: 10px;
+  }
   .two-flex{
     display: flex;
     flex-wrap: wrap;
@@ -136,5 +192,23 @@ height: 40px;
 .text-area-details{
   width: 250px;
   height: 40px;
+}
+.user-text-area{
+  width: 200px;
+  height: 40px;
+}
+.full-details-list{
+height: 250px;
+  width: 310px;
+ 
+}
+.full-details{
+ 
+  width: 300px;
+ 
+}
+.more-details-div{
+  
+  padding: 0px;
 }
 }

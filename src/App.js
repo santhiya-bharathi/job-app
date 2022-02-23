@@ -208,6 +208,7 @@ useEffect(()=>{
           <Postedjob />
         </Route>
 
+    
         <Route path="/joblist">
           <Listjob />
         </Route>
@@ -294,7 +295,7 @@ useEffect(()=>{
   console.log(jobdet);
   return(
     <div className='more-details-div'>
-    <h2 className='title title-margin'><span className='span'>Role : </span>{jobdet.title}</h2>
+    <p className='title title-margin'><span className='span'>Role : </span>{jobdet.title}</p>
     <p className='title title-margin'> <span className='span'>Company : </span> {jobdet.company}</p>
     <p className='title title-margin'><span className='span'>Department :  </span> {jobdet.department}</p>
     <p className='title title-margin'><span className='span'>Salary :  </span> {jobdet.salaryrange}</p>
@@ -861,12 +862,14 @@ experience={experience}
 function Listjobdetails({jobrole, company, skills, experience, lastdate}){
   return(
     <div className='container'>
-    <div className="full-details">
-    <p className='title title-margin'><span className='span'>jobrole :  </span> {jobrole}</p>
-    <p className='title title-margin'><span className='span'>company :  </span> {company}</p>
-    <p className='title title-margin'><span className='span'>skills :  </span> {skills}</p>
-    <p className='title title-margin'><span className='span'>experience :  </span> {experience}</p>
-    <p className='title title-margin'><span className='span'>lastdate :  </span> {lastdate}</p>
+    <div className="full-details-list">
+    <p className='title title-margin'><span className='span'>JobRole :  </span> {jobrole}</p>
+    <hr></hr>
+    <p className='title title-margin'><span className='span'>Company :  </span> {company}</p>
+    
+    <p className='title title-margin'><span className='span'>Skills Required:  </span> {skills}</p>
+    <p className='title title-margin'><span className='span'>Experience :  </span> {experience}</p>
+    <p className='title title-margin'><span className='span'>LastDate :  </span> {lastdate}</p>
     </div>
     </div>
   );
@@ -996,8 +999,11 @@ function UpdateUserDetail({userdet}){
   return(
 <form onSubmit={handleSubmit} className="in-con">
 
-
-      <TextareaAutosize id="firstname" 
+<div className='two-flex'>
+<div >
+  <label className='title-flex'>Firstname</label>
+  <div className='title-flex'>
+      <input id="firstname" 
       name="firstname" 
       value = {values.firstname} 
       onChange={handleChange} 
@@ -1005,10 +1011,15 @@ function UpdateUserDetail({userdet}){
        label="enter your firstname" 
        error={errors.firstname && touched.firstname}
        helperText={errors.firstname && touched.firstname && errors.firstname}
-       style={{ width: 200 }}/>
-       
+       className="user-text-area"/>
+       </div>
+       </div>
      
-     <TextareaAutosize id="lastname" 
+
+       <div >
+  <label className='title-flex'>Lastname</label>
+  <div className='title-flex'>
+     <input id="lastname" 
       name="lastname" 
       value = {values.lastname} 
       onChange={handleChange} 
@@ -1016,10 +1027,14 @@ function UpdateUserDetail({userdet}){
       label="enter your lastname"
       error={errors.lastname && touched.lastname}
       helperText={errors.lastname && touched.lastname && errors.lastname}
-      style={{ width: 200 }} />
-      
+      className="user-text-area" />
+      </div>
+       </div>
 
-      <TextareaAutosize id="mobile" 
+       <div >
+  <label className='title-flex'>Mobile.No</label>
+  <div className='title-flex'>
+      <input id="mobile" 
       name="mobile" 
       value = {values.mobile} 
       onChange={handleChange} 
@@ -1027,82 +1042,136 @@ function UpdateUserDetail({userdet}){
       label="enter your mobile number" 
       error={errors.mobile && touched.mobile}
        helperText={errors.mobile && touched.mobile && errors.mobile}
-       style={{ width: 200 }} />
-      
+       className="user-text-area" />
+       </div>
+       </div>
+       </div>
 
-      <TextareaAutosize id="portfolio" 
+
+       <div className='two-flex'>
+  <div >
+  <label className='title-flex'>Portfolio</label>
+  <div className='title-flex'>
+      <input id="portfolio" 
       name="portfolio" 
       value = {values.portfolio} 
       onChange={handleChange} 
       onBlur={handleBlur}  label="enter your portfolio" 
       error= {errors.portfolio && touched.portfolio}
       helperText= {errors.portfolio && touched.portfolio && errors.portfolio}
-      style={{ width: 200 }} />
+      className="user-text-area" />
+       </div>
+       </div>
      
-      <TextareaAutosize id="email" 
+       <div >
+  <label className='title-flex'>Email</label>
+  <div className='title-flex'>
+      <input id="email" 
       name="email" 
       value = {values.email} 
       onChange={handleChange} 
       onBlur={handleBlur}  label="enter your email"
       error=  {errors.email && touched.email}
       helperText= {errors.email && touched.email && errors.email}
-      style={{ width: 200 }} />
+      className="user-text-area" />
+        </div>
+       </div>
 
-      <TextareaAutosize id="about" 
+<div >
+  <label className='title-flex'>About</label>
+  <div className='title-flex'>
+      <input id="about" 
       name="about" 
       value = {values.about} 
       onChange={handleChange} 
       onBlur={handleBlur}  label="enter about"
       error=  {errors.about && touched.about}
       helperText= {errors.about && touched.about && errors.about}
-      style={{ width: 200 }} />
+      className="user-text-area" />
+  </div>
+       </div>
+       </div>
 
-      <TextareaAutosize id="address" 
+       <div className='two-flex'>
+<div >
+  <label className='title-flex'>Address</label>
+  <div className='title-flex'>
+      <input id="address" 
       name="address" 
       value = {values.address} 
       onChange={handleChange} 
       onBlur={handleBlur}  label="enter your address"
       error=  {errors.address && touched.address}
       helperText= {errors.address && touched.address && errors.address}
-      style={{ width: 200 }} />
+      className="user-text-area" />
+       </div>
+       </div>
 
-      <TextareaAutosize id="education" 
+
+<div >
+  <label className='title-flex'>Education</label>
+  <div className='title-flex'>
+      <input id="education" 
       name="education" 
       value = {values.education} 
       onChange={handleChange} 
       onBlur={handleBlur}  label="enter your education"
       error=  {errors.education && touched.education}
       helperText= {errors.education && touched.education && errors.education}
-      style={{ width: 200 }} />
+      className="user-text-area" />
+        </div>
+       </div>
 
-      <TextareaAutosize id="skill" 
+
+<div >
+  <label className='title-flex'>Skill</label>
+  <div className='title-flex'>
+      <input id="skill" 
       name="skill" 
       value = {values.skill} 
       onChange={handleChange} 
       onBlur={handleBlur}  label="enter your skill"
       error=  {errors.skill && touched.skill}
       helperText= {errors.skill && touched.skill && errors.skill}
-      style={{ width: 200 }} />
+      className="user-text-area" />
+        </div>
+       </div>
+       </div>
 
-      <TextareaAutosize id="experience" 
+       <div className='two-flex'>
+<div >
+  <label className='title-flex'>Experience</label>
+  <div className='title-flex'>
+      <input id="experience" 
         name="experience" 
         value = {values.experience} 
         onChange={handleChange} 
         onBlur={handleBlur}  label="enter your experience"
         error=  {errors.experience && touched.experience}
         helperText= {errors.experience && touched.experience && errors.experience}
-        style={{ width: 200 }} />
+        className="user-text-area" />
+         </div>
+       </div>
 
-      <TextareaAutosize id="project" 
+
+       <div >
+  <label className='title-flex'>Project</label>
+  <div className='title-flex'>
+      <input id="project" 
         name="project" 
         value = {values.project} 
         onChange={handleChange} 
         onBlur={handleBlur}  label="enter your project"
         error=  {errors.project && touched.project}
         helperText= {errors.project && touched.project && errors.project}
-        style={{ width: 200 }} />
-     
+        className="user-text-area" />
+           </div>
+       </div>
+       </div>
+     <div className='button-flex'>
       <Button type="submit" variant="contained">Post Details</Button>
+      </div>
+     
       </form>
   );
 }
