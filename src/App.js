@@ -34,6 +34,7 @@ import TextareaAutosize from '@mui/material/TextareaAutosize';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
+
 const API_URL = "https://job-node.herokuapp.com";
 
 function App() {
@@ -353,9 +354,11 @@ function Addjob(){
 
   return(
     <form onSubmit={handleSubmit} className="in-con">
-
-
-    <TextareaAutosize id="title" 
+<div className='two-flex'>
+<div >
+  <label className='title-flex'>Title</label>
+  <div className='title-flex'>
+  <input id="title" 
           name="title" 
           value = {values.title} 
           onChange={handleChange} 
@@ -363,10 +366,17 @@ function Addjob(){
            label="enter title" 
            error={errors.title && touched.title}
            helperText={errors.title && touched.title && errors.title}
-           style={{ width: 200 }}/>
+           minRows={2}
+           className="text-area"
+           />
+           </div>
+</div>
+    
            
-         
-         <TextareaAutosize id="company" 
+<div >
+  <label className='title-flex'>Company</label>
+  <div className='title-flex'>    
+         <input id="company" 
           name="company" 
           value = {values.company} 
           onChange={handleChange} 
@@ -374,10 +384,17 @@ function Addjob(){
           label="enter company name"
           error={errors.company && touched.company}
           helperText={errors.company && touched.company && errors.company}
-          style={{ width: 200 }} />
-          
-    
-          <TextareaAutosize id="department" 
+          minRows={2}
+          className="text-area" />
+           </div>
+</div>
+</div>
+
+         <div className='two-flex'> 
+<div >
+  <label className='title-flex'>Department</label>
+  <div className='title-flex'>
+          <input id="department" 
           name="department" 
           value = {values.department} 
           onChange={handleChange} 
@@ -385,45 +402,96 @@ function Addjob(){
           label="enter department" 
           error={errors.department && touched.department}
            helperText={errors.department && touched.department && errors.department}
-           style={{ width: 200 }} />
-          
-    
-          <TextareaAutosize id="salaryrange" 
+           minRows={2}
+           className="text-area" />
+            </div>
+ </div>
+     
+
+ <div >
+  <label className='title-flex'>Salary Range</label>
+  <div className='title-flex'>
+          <input id="salaryrange" 
           name="salaryrange" 
           value = {values.salaryrange} 
           onChange={handleChange} 
           onBlur={handleBlur}  label="enter salaryrange" 
           error= {errors.salaryrange && touched.salaryrange}
           helperText= {errors.salaryrange && touched.salaryrange && errors.salaryrange}
-          style={{ width: 200 }} />
-         
-          <TextareaAutosize id="experience" 
+          minRows={2}
+          className="text-area"/>
+           </div>
+</div>
+</div>
+
+
+<div className='two-flex'> 
+<div >
+  <label className='title-flex'>Experience</label>
+  <div className='title-flex'>
+          <input id="experience" 
           name="experience" 
           value = {values.experience} 
           onChange={handleChange} 
           onBlur={handleBlur}  label="enter experience"
           error=  {errors.experience && touched.experience}
           helperText= {errors.experience && touched.experience && errors.experience}
-          style={{ width: 200 }} />
+          minRows={2}
+          className="text-area"/>
+           </div>
+</div>
 
-          <TextareaAutosize id="skillsrequired" 
+<div >
+  <label className='title-flex'>Skills</label>
+  <div className='title-flex'>
+          <input id="skillsrequired" 
           name="skillsrequired" 
           value = {values.skillsrequired} 
           onChange={handleChange} 
           onBlur={handleBlur}  label="enter skillsrequired"
           error=  {errors.skillsrequired && touched.skillsrequired}
           helperText= {errors.skillsrequired && touched.skillsrequired && errors.skillsrequired}
-          style={{ width: 200 }} />
+          minRows={2}
+          className="text-area" />
+           </div>
+</div>
+</div>
 
-          <TextareaAutosize id="minimumqualification" 
+<div className='two-flex'> 
+<div >
+  <label className='title-flex'>Minimum Qualification</label>
+  <div className='title-flex'>
+          <input id="minimumqualification" 
           name="minimumqualification" 
           value = {values.minimumqualification} 
           onChange={handleChange} 
           onBlur={handleBlur}  label="enter minimumqualification"
           error=  {errors.minimumqualification && touched.minimumqualification}
           helperText= {errors.minimumqualification && touched.minimumqualification && errors.minimumqualification}
-          style={{ width: 200 }} />
+          minRows={2}
+          className="text-area"  />
+           </div>
+</div>
 
+<div >
+  <label className='title-flex'>Posting Date(enter like dec 20 2021)</label>
+  <div className='title-flex'>
+          <input id="posteddate" 
+          name="posteddate" 
+          value = {values.posteddate} 
+          onChange={handleChange} 
+          onBlur={handleBlur}  label="enter date like dec 20 2021"
+          error=  {errors.posteddate && touched.posteddate}
+          helperText= {errors.posteddate && touched.posteddate && errors.posteddate}
+          minRows={6}
+          className="text-area" />
+           </div>
+</div>
+</div>
+
+<div >
+  <label className='title-flex'>Brief Description</label>
+  <div className='title-flex'>
           <TextareaAutosize id="briefdescription" 
           name="briefdescription" 
           value = {values.briefdescription} 
@@ -431,8 +499,16 @@ function Addjob(){
           onBlur={handleBlur}  label="enter briefdescription"
           error=  {errors.briefdescription && touched.briefdescription}
           helperText= {errors.briefdescription && touched.briefdescription && errors.briefdescription}
-          style={{ width: 200 }} />
+          minRows={6}
+          className="text-area-details" />
+           </div>
+</div>
 
+
+
+<div >
+  <label className='title-flex'>Detaile Description</label>
+  <div className='title-flex'>
           <TextareaAutosize id="detailedescription" 
           name="detailedescription" 
           value = {values.detailedescription} 
@@ -440,17 +516,12 @@ function Addjob(){
           onBlur={handleBlur}  label="enter detailedescription"
           error=  {errors.detailedescription && touched.detailedescription}
           helperText= {errors.detailedescription && touched.detailedescription && errors.detailedescription}
-          style={{ width: 200 }} />
+          minRows={6}
+          className="text-area-details" />
+           </div>
+</div>
 
-          <TextareaAutosize id="posteddate" 
-          name="posteddate" 
-          value = {values.posteddate} 
-          onChange={handleChange} 
-          onBlur={handleBlur}  label="enter date like dec 20 2021"
-          error=  {errors.posteddate && touched.posteddate}
-          helperText= {errors.posteddate && touched.posteddate && errors.posteddate}
-          style={{ width: 200 }} />
-         
+
           <Button type="submit" variant="contained">Post Details</Button>
           </form>
   );
@@ -520,103 +591,172 @@ function Updatepostedjob({jobdet}){
   };
 return(
   <form onSubmit={handleSubmit} className="in-con">
+<div className='two-flex'>
+<div >
+  <label className='title-flex'>Title</label>
+  <div className='title-flex'>
+  <input id="title" 
+          name="title" 
+          value = {values.title} 
+          onChange={handleChange} 
+          onBlur={handleBlur}
+           label="enter title" 
+           error={errors.title && touched.title}
+           helperText={errors.title && touched.title && errors.title}
+           minRows={2}
+           className="text-area"
+           />
+           </div>
+</div>
+    
+           
+<div >
+  <label className='title-flex'>Company</label>
+  <div className='title-flex'>    
+         <input id="company" 
+          name="company" 
+          value = {values.company} 
+          onChange={handleChange} 
+          onBlur={handleBlur}
+          label="enter company name"
+          error={errors.company && touched.company}
+          helperText={errors.company && touched.company && errors.company}
+          minRows={2}
+          className="text-area" />
+           </div>
+</div>
+</div>
+
+         <div className='two-flex'> 
+<div >
+  <label className='title-flex'>Department</label>
+  <div className='title-flex'>
+          <input id="department" 
+          name="department" 
+          value = {values.department} 
+          onChange={handleChange} 
+          onBlur={handleBlur}  
+          label="enter department" 
+          error={errors.department && touched.department}
+           helperText={errors.department && touched.department && errors.department}
+           minRows={2}
+           className="text-area" />
+            </div>
+ </div>
+     
+
+ <div >
+  <label className='title-flex'>Salary Range</label>
+  <div className='title-flex'>
+          <input id="salaryrange" 
+          name="salaryrange" 
+          value = {values.salaryrange} 
+          onChange={handleChange} 
+          onBlur={handleBlur}  label="enter salaryrange" 
+          error= {errors.salaryrange && touched.salaryrange}
+          helperText= {errors.salaryrange && touched.salaryrange && errors.salaryrange}
+          minRows={2}
+          className="text-area"/>
+           </div>
+</div>
+</div>
 
 
-  <TextareaAutosize id="title" 
-        name="title" 
-        value = {values.title} 
-        onChange={handleChange} 
-        onBlur={handleBlur}
-         label="enter title" 
-         error={errors.title && touched.title}
-         helperText={errors.title && touched.title && errors.title}
-         style={{ width: 200 }}/>
-         
-       
-       <TextareaAutosize id="company" 
-        name="company" 
-        value = {values.company} 
-        onChange={handleChange} 
-        onBlur={handleBlur}
-        label="enter company name"
-        error={errors.company && touched.company}
-        helperText={errors.company && touched.company && errors.company}
-        style={{ width: 200 }} />
-        
-  
-        <TextareaAutosize id="department" 
-        name="department" 
-        value = {values.department} 
-        onChange={handleChange} 
-        onBlur={handleBlur}  
-        label="enter department" 
-        error={errors.department && touched.department}
-         helperText={errors.department && touched.department && errors.department}
-         style={{ width: 200 }} />
-        
-  
-        <TextareaAutosize id="salaryrange" 
-        name="salaryrange" 
-        value = {values.salaryrange} 
-        onChange={handleChange} 
-        onBlur={handleBlur}  label="enter salaryrange" 
-        error= {errors.salaryrange && touched.salaryrange}
-        helperText= {errors.salaryrange && touched.salaryrange && errors.salaryrange}
-        style={{ width: 200 }} />
-       
-        <TextareaAutosize id="experience" 
-        name="experience" 
-        value = {values.experience} 
-        onChange={handleChange} 
-        onBlur={handleBlur}  label="enter experience"
-        error=  {errors.experience && touched.experience}
-        helperText= {errors.experience && touched.experience && errors.experience}
-        style={{ width: 200 }} />
+<div className='two-flex'> 
+<div >
+  <label className='title-flex'>Experience</label>
+  <div className='title-flex'>
+          <input id="experience" 
+          name="experience" 
+          value = {values.experience} 
+          onChange={handleChange} 
+          onBlur={handleBlur}  label="enter experience"
+          error=  {errors.experience && touched.experience}
+          helperText= {errors.experience && touched.experience && errors.experience}
+          minRows={2}
+          className="text-area"/>
+           </div>
+</div>
 
-        <TextareaAutosize id="skillsrequired" 
-        name="skillsrequired" 
-        value = {values.skillsrequired} 
-        onChange={handleChange} 
-        onBlur={handleBlur}  label="enter skillsrequired"
-        error=  {errors.skillsrequired && touched.skillsrequired}
-        helperText= {errors.skillsrequired && touched.skillsrequired && errors.skillsrequired}
-        style={{ width: 200 }} />
+<div >
+  <label className='title-flex'>Skills</label>
+  <div className='title-flex'>
+          <input id="skillsrequired" 
+          name="skillsrequired" 
+          value = {values.skillsrequired} 
+          onChange={handleChange} 
+          onBlur={handleBlur}  label="enter skillsrequired"
+          error=  {errors.skillsrequired && touched.skillsrequired}
+          helperText= {errors.skillsrequired && touched.skillsrequired && errors.skillsrequired}
+          minRows={2}
+          className="text-area" />
+           </div>
+</div>
+</div>
 
-        <TextareaAutosize id="minimumqualification" 
-        name="minimumqualification" 
-        value = {values.minimumqualification} 
-        onChange={handleChange} 
-        onBlur={handleBlur}  label="enter minimumqualification"
-        error=  {errors.minimumqualification && touched.minimumqualification}
-        helperText= {errors.minimumqualification && touched.minimumqualification && errors.minimumqualification}
-        style={{ width: 200 }} />
+<div className='two-flex'> 
+<div >
+  <label className='title-flex'>Minimum Qualification</label>
+  <div className='title-flex'>
+          <input id="minimumqualification" 
+          name="minimumqualification" 
+          value = {values.minimumqualification} 
+          onChange={handleChange} 
+          onBlur={handleBlur}  label="enter minimumqualification"
+          error=  {errors.minimumqualification && touched.minimumqualification}
+          helperText= {errors.minimumqualification && touched.minimumqualification && errors.minimumqualification}
+          minRows={2}
+          className="text-area"  />
+           </div>
+</div>
 
-        <TextareaAutosize id="briefdescription" 
-        name="briefdescription" 
-        value = {values.briefdescription} 
-        onChange={handleChange} 
-        onBlur={handleBlur}  label="enter briefdescription"
-        error=  {errors.briefdescription && touched.briefdescription}
-        helperText= {errors.briefdescription && touched.briefdescription && errors.briefdescription}
-        style={{ width: 200 }} />
+<div >
+  <label className='title-flex'>Posting Date(enter like dec 20 2021)</label>
+  <div className='title-flex'>
+          <input id="posteddate" 
+          name="posteddate" 
+          value = {values.posteddate} 
+          onChange={handleChange} 
+          onBlur={handleBlur}  label="enter date like dec 20 2021"
+          error=  {errors.posteddate && touched.posteddate}
+          helperText= {errors.posteddate && touched.posteddate && errors.posteddate}
+          minRows={6}
+          className="text-area" />
+           </div>
+</div>
+</div>
 
-        <TextareaAutosize id="detailedescription" 
-        name="detailedescription" 
-        value = {values.detailedescription} 
-        onChange={handleChange} 
-        onBlur={handleBlur}  label="enter detailedescription"
-        error=  {errors.detailedescription && touched.detailedescription}
-        helperText= {errors.detailedescription && touched.detailedescription && errors.detailedescription}
-        style={{ width: 200 }} />
+<div >
+  <label className='title-flex'>Brief Description</label>
+  <div className='title-flex'>
+          <TextareaAutosize id="briefdescription" 
+          name="briefdescription" 
+          value = {values.briefdescription} 
+          onChange={handleChange} 
+          onBlur={handleBlur}  label="enter briefdescription"
+          error=  {errors.briefdescription && touched.briefdescription}
+          helperText= {errors.briefdescription && touched.briefdescription && errors.briefdescription}
+          minRows={6}
+          className="text-area-details" />
+           </div>
+</div>
 
-        <TextareaAutosize id="posteddate" 
-        name="posteddate" 
-        value = {values.posteddate} 
-        onChange={handleChange} 
-        onBlur={handleBlur}  label="enter date like dec 20 2021"
-        error=  {errors.posteddate && touched.posteddate}
-        helperText= {errors.posteddate && touched.posteddate && errors.posteddate}
-        style={{ width: 200 }} />
+
+
+<div >
+  <label className='title-flex'>Detaile Description</label>
+  <div className='title-flex'>
+          <TextareaAutosize id="detailedescription" 
+          name="detailedescription" 
+          value = {values.detailedescription} 
+          onChange={handleChange} 
+          onBlur={handleBlur}  label="enter detailedescription"
+          error=  {errors.detailedescription && touched.detailedescription}
+          helperText= {errors.detailedescription && touched.detailedescription && errors.detailedescription}
+          minRows={6}
+          className="text-area-details" />
+           </div>
+</div>
        
         <Button type="submit" variant="contained">Post Details</Button>
         </form>
