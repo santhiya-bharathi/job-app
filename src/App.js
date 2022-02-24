@@ -169,7 +169,7 @@ useEffect(()=>{
         <Divider />
         <Button varient="text" color="inherit" onClick={()=>history.push("/postedjob")}><CheckIcon />Posted Job</Button>
         <Divider />
-        <Button varient="text" color="inherit" onClick={()=>history.push("/joblist")}><PostAddIcon />Jobs</Button>
+        <Button varient="text" color="inherit" onClick={()=>history.push("/joblist")}><PostAddIcon />Available Jobs</Button>
         <Divider />
         
         </div>
@@ -180,12 +180,16 @@ useEffect(()=>{
         <DrawerHeader />
         <Switch>
       
-      <Route exact path="/home">
-          <Home />
+        <Route  exact path="/">
+          <Intro />
         </Route>
 
         <Route path="/home/:id">
         <Moredetails />
+        </Route>
+
+         <Route path="/home">
+          <Home />
         </Route>
 
         <Route path="/userdetail/edit/:id">
@@ -226,6 +230,14 @@ useEffect(()=>{
 }
 
 export default App;
+
+function Intro(){
+  return(
+    <div>
+      <h2 className='intro'>Welcome to Job Portal</h2>
+    </div>
+  );
+}
 
 function Home() {
   const [job, setJob] = useState([]);
@@ -357,7 +369,7 @@ function Addjob(){
     <form onSubmit={handleSubmit} className="in-con">
 <div className='two-flex'>
 <div >
-  <label className='title-flex'>Title</label>
+  <label className='title-flex'>Job Role</label>
   <div className='title-flex'>
   <input id="title" 
           name="title" 
@@ -508,7 +520,7 @@ function Addjob(){
 
 
 <div >
-  <label className='title-flex'>Detaile Description</label>
+  <label className='title-flex'>Detail Description</label>
   <div className='title-flex'>
           <TextareaAutosize id="detailedescription" 
           name="detailedescription" 
@@ -522,8 +534,9 @@ function Addjob(){
            </div>
 </div>
 
-
+<div className='button-flex'>
           <Button type="submit" variant="contained">Post Details</Button>
+          </div>
           </form>
   );
 }
@@ -758,8 +771,9 @@ return(
           className="text-area-details" />
            </div>
 </div>
-       
+<div className='button-flex'>
         <Button type="submit" variant="contained">Post Details</Button>
+        </div>
         </form>
 );
 }
@@ -888,6 +902,7 @@ function User(){
   const history = useHistory();
   return(
     <section>
+     
 {userlist.map(({firstname,lastname,mobile,portfolio,email,about,address,education,skill,experience,project,_id})=>(<Userdetails firstname={firstname}
 key={_id}
 id={_id}
@@ -915,16 +930,17 @@ function Userdetails({firstname,lastname,mobile,portfolio,email,about,address,ed
   return(
     <div className='container'>
     <div className="full-details">
+    <h2 className='intro'>User Profile</h2>
     <p className='title title-margin'><span className='span'>firstname :  </span> {firstname}</p>
     <p className='title title-margin'><span className='span'>lastname :  </span> {lastname}</p>
     <p className='title title-margin'><span className='span'>mobile :  </span> {mobile}</p>
     <p className='title title-margin'><span className='span'>portfolio :  </span> {portfolio}</p>
     <p className='title title-margin'><span className='span'>email :  </span> {email}</p>
     <p className='title title-margin'><span className='span'>about :  </span> {about}</p>
-    <p className='title title-margin'><span className='span'>address :  </span> {address}</p>
     <p className='title title-margin'><span className='span'>education :  </span> {education}</p>
     <p className='title title-margin'><span className='span'>skill :  </span> {skill}</p>
     <p className='title title-margin'><span className='span'>experience :  </span> {experience}</p>
+    <p className='title title-margin'><span className='span'>address :  </span> {address}</p>
     <p className='title title-margin'><span className='span'>project :  </span> {project}</p>
 
     {editButton}
