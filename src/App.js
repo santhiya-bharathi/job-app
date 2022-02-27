@@ -34,7 +34,7 @@ import { Moredetails, Home } from './homepage/Home';
 import { Addjob } from './job add and edit folder/Addjob';
 import { Postedjob } from './job add and edit folder/Postedjob';
 import { Editpostedjob } from './job add and edit folder/Editpostedjob';
-import { Intro } from './homepage/Intro';
+
 
 
 export const API_URL = "https://job-node.herokuapp.com";
@@ -182,8 +182,8 @@ useEffect(()=>{
         <DrawerHeader />
         <Switch>
       
-        <Route  exact path="/">
-          <Intro />
+        <Route exact path="/">
+        <Home />
         </Route>
 
         <Route path="/home/:id">
@@ -191,7 +191,7 @@ useEffect(()=>{
         </Route>
 
          <Route path="/home">
-          <Home />
+         <Home />
         </Route>
 
         <Route path="/userdetail/edit/:id">
