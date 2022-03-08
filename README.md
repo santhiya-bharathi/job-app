@@ -1,5 +1,4 @@
-
-Live demo link
+demo link
 
 https://jobportalapp.netlify.app
 
