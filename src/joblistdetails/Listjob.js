@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect, useState } from "react";
-import { API_URL } from '../App';
+import { API_URL, Navbar } from '../App';
 
 export function Listjob() {
   const [joblist, setJoblist] = useState([]);
@@ -14,6 +14,8 @@ export function Listjob() {
   useEffect(getJobslist, []);
   return (
     <div>
+    <Navbar />
+    <div>
       {joblist.map(({ jobrole, company, skills, experience, lastdate, _id }) => (<Listjobdetails jobrole={jobrole}
         key={_id}
         id={_id}
@@ -21,6 +23,7 @@ export function Listjob() {
         skills={skills}
         experience={experience}
         lastdate={lastdate} />))}
+    </div>
     </div>
   );
 }

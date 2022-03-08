@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { API_URL } from '../App';
+import { API_URL, Navbar } from '../App';
 
 export function EditUserDetail() {
   const { id } = useParams();
@@ -71,7 +71,9 @@ function UpdateUserDetail({ userdet }) {
     }).then(() => history.push("/userdetail"));
   };
   return (
-    <form onSubmit={handleSubmit} className="in-con">
+    <div>
+    <Navbar />
+    <form onSubmit={handleSubmit} className="in-con-edit">
 
       <div className='two-flex'>
         <div>
@@ -247,5 +249,6 @@ function UpdateUserDetail({ userdet }) {
       </div>
 
     </form>
+    </div>
   );
 }

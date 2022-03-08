@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { API_URL } from '../App';
+import { API_URL, Navbar  } from '../App';
 
 export function Editpostedjob() {
 
@@ -71,6 +71,8 @@ function Updatepostedjob({ jobdet }) {
     }).then(() => history.push("/postedjob"));
   };
   return (
+    <div>
+    <Navbar />
     <form onSubmit={handleSubmit} className="in-con">
       <div className='two-flex'>
         <div>
@@ -241,5 +243,6 @@ function Updatepostedjob({ jobdet }) {
         <Button type="submit" variant="contained">Post Details</Button>
       </div>
     </form>
+    </div>
   );
 }

@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import { API_URL } from '../App';
+import { API_URL, Navbar } from '../App';
 
 export function Postedjob() {
   const [job, setJob] = useState([]);
@@ -25,6 +25,8 @@ export function Postedjob() {
   const history = useHistory();
   return (
     <div>
+    <Navbar />
+    <div>
       {job.map(({ title, company, briefdescription, salaryrange, experience, posteddate, _id }) => (<Postedjobsdetails title={title}
         key={_id}
         id={_id}
@@ -42,6 +44,7 @@ export function Postedjob() {
           onClick={() => history.push("/postedjob/edit/" + _id)}>
           <EditIcon />
         </IconButton>} />))}
+    </div>
     </div>
   );
 }

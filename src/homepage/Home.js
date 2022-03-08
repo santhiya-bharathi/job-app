@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
-import { API_URL } from '../App';
+import { API_URL, Navbar } from '../App';
 
 export function Home() {
   const [job, setJob] = useState([]);
@@ -18,6 +18,8 @@ export function Home() {
   useEffect(getJobs, []);
 
   return (
+    <div>
+      <Navbar />
     <section>
       {job.map(({ title, company, briefdescription, salaryrange, experience, posteddate, _id }) => (<Jobs title={title}
         key={_id}
@@ -28,12 +30,13 @@ export function Home() {
         experience={experience}
         posteddate={posteddate} />))}
     </section>
-
+    </div>
   );
 }
 function Jobs({ title, company, briefdescription, salaryrange, experience, posteddate, id }) {
   const history = useHistory();
   return (
+    
     <div className='container'>
       <div className="full-details">
         <div className='div-flex'>
@@ -56,6 +59,7 @@ function Jobs({ title, company, briefdescription, salaryrange, experience, poste
         </div>
       </div>
     </div>
+    
   );
 }
 export function Moredetails() {
@@ -72,6 +76,8 @@ export function Moredetails() {
 
   console.log(jobdet);
   return (
+    <div>
+    <Navbar />
     <div className='more-details-div'>
       <p className='title title-margin'><span className='span'>Role : </span>{jobdet.title}</p>
       <p className='title title-margin'> <span className='span'>Company : </span> {jobdet.company}</p>
@@ -87,6 +93,7 @@ export function Moredetails() {
         <Button onClick={() => history.push("/home")} variant="outlined"><KeyboardBackspaceIcon />Back</Button>
 
       </div>
+    </div>
     </div>
   );
 }
